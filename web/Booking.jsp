@@ -1,7 +1,7 @@
 <%-- 
     Document   : Booking
     Created on : Apr 26, 2025, 9:10:35?AM
-    Author     : oshan
+    Author     : Randun Gayantha
 --%>
 
 <%@page import="cinema.dao.com.BookingsDAO"%>

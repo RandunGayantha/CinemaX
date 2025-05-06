@@ -1,7 +1,7 @@
 <%-- 
     Document   : customerLogin
     Created on : Apr 26, 2025, 6:24:22 PM
-    Author     : oshan
+    Author     : Randun Gayantha
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

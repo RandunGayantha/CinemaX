@@ -55,6 +55,10 @@
 <body>
     <h1>Admin Dashboard</h1>
     <a href="addFilm.jsp">Add Film</a>
+    <a href="adminView?action=films">View Films</a>
+    <a href="adminView?action=customers">View Customers</a>
+    <a href="adminView?action=bookings">View Bookings</a>
+    <a href="adminView?action=payments">View Payments</a><br>
     <a href="AdminLogoutServlet">Logout</a>
 </body>
 </html>

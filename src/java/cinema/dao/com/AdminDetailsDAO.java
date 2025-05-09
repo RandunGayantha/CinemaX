@@ -1,103 +1,71 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List, java.util.Map" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>View Films - Cinema Booking</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+package cinema.dao.com;
+
+import java.sql.*;
+import java.util.*;
+
+public class AdminDetailsDAO {
+    private final String URL = "jdbc:mysql://localhost:3306/cinematicketsbookingsystem";
+    private final String USER = "root";
+    private final String PASS = "1111";
+
+    public List<Map<String, String>> getAllCustomers() {
+        List<Map<String, String>> list = new ArrayList<>();
+        String sql = "SELECT * FROM customers";
+        try (Connection con = DriverManager.getConnection(URL, USER, PASS);
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Map<String, String> row = new HashMap<>();
+                row.put("fullname", rs.getString("fullname"));
+                row.put("nic", rs.getString("nic"));
+                row.put("email", rs.getString("email"));
+                row.put("phone", rs.getString("phone"));
+                list.add(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return list;
+    }
 
-        h2 {
-            font-size: 2.5em;
-            margin: 20px 0;
-            text-shadow: 2px 2px 4px #000;
+    public List<Map<String, String>> getAllBookings() {
+        List<Map<String, String>> list = new ArrayList<>();
+        String sql = "SELECT b.id, c.fullname, b.film_name, b.show_time, b.seat FROM booking b JOIN customers c ON b.customer_id = c.id";
+        try (Connection con = DriverManager.getConnection(URL, USER, PASS);
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Map<String, String> row = new HashMap<>();
+                row.put("id", rs.getString("id"));
+                row.put("customer", rs.getString("fullname"));
+                row.put("film_name", rs.getString("film_name"));
+                row.put("show_time", rs.getString("show_time"));
+                row.put("seat", rs.getString("seat"));
+                list.add(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return list;
+    }
 
-        table {
-            width: 100%;
-            max-width: 1000px;
-            border-collapse: collapse;
-            background-color: rgba(0,0,0,0.7);
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-            border-radius: 10px;
-            overflow: hidden;
+    public List<Map<String, String>> getAllPayments() {
+        List<Map<String, String>> list = new ArrayList<>();
+        String sql = "SELECT * FROM payment";
+        try (Connection con = DriverManager.getConnection(URL, USER, PASS);
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Map<String, String> row = new HashMap<>();
+                row.put("id", rs.getString("id"));
+                row.put("booking_id", rs.getString("booking_id"));
+                row.put("amount", rs.getString("amount"));
+                row.put("status", rs.getString("status"));
+                list.add(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #444;
-        }
-
-        th {
-            background-color: #1c1c1c;
-            color: #fff;
-            font-size: 1.1em;
-        }
-
-        td {
-            font-size: 0.95em;
-        }
-
-        a {
-            color: #e50914;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .back-link {
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-
-<h2>All Films</h2>
-
-<%
-    List<Map<String, String>> films = (List<Map<String, String>>) request.getAttribute("films");
-%>
-
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Duration</th>
-        <th>Language</th>
-        <th>Release Date</th>
-        <th>Description</th>
-        <th>Action</th>
-    </tr>
-    <% for (Map<String, String> film : films) { %>
-    <tr>
-        <td><%= film.get("id") %></td>
-        <td><%= film.get("title") %></td>
-        <td><%= film.get("duration") %> mins</td>
-        <td><%= film.get("language") %></td>
-        <td><%= film.get("release_date") %></td>
-        <td><%= film.get("description") %></td>
-        <td><a href="adminView?action=delete&id=<%= film.get("id") %>" onclick="return confirm('Are you sure you want to delete this film?')">Delete</a></td>
-    </tr>
-    <% } %>
-</table>
-
-<p class="back-link"><a href="admin.jsp">Back to Admin Dashboard</a></p>
-
-</body>
-</html>
+        return list;
+    }
+}

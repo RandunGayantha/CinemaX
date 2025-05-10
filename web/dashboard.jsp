@@ -6,7 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -139,25 +138,66 @@
     .movie-info button:hover {
       background-color: #e84321;
     }
-    
-    footer {
-  background-color: #1a1a1a;
-  color: #aaa;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 3rem;
-  font-size: 0.9rem;
-  border-top: 1px solid #333;
-}
 
+    .about-contact {
+      display: flex;
+      justify-content: space-between;
+      background-color: #1a1a1a;
+      color: #ccc;
+      padding: 1.5rem 2rem;
+      font-size: 0.9rem;
+      border-top: 1px solid #333;
+      flex-wrap: wrap;
+    }
+
+    .about-contact .info-group {
+      flex: 1 1 30%;
+      margin: 0.5rem 1rem;
+    }
+
+    .about-contact h3 {
+      color: #ff4b2b;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .about-contact p {
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .about-contact a {
+      color: #ff4b2b;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer {
+      background-color: #1a1a1a;
+      color: #aaa;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.85rem;
+      border-top: 1px solid #333;
+    }
 
     @media (max-width: 600px) {
       nav ul {
         flex-direction: column;
         gap: 1rem;
       }
+
       .movie img {
         height: 280px;
+      }
+
+      .about-contact {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-contact .info-group {
+        margin: 1rem 0;
       }
     }
   </style>
@@ -210,15 +250,32 @@
       </div>
     </div>
   </section>
- 
-<footer>
-  <p>&copy; 2025 CinemaX. All rights reserved.</p>
-</footer>
 
+  <!-- Compact About/Contact Section -->
+  <section class="about-contact">
+    <div class="info-group">
+      <h3>About</h3>
+      <p>CinemaX offers fast and secure movie ticket bookings for all the latest blockbusters. Enjoy a seamless movie-going experience.</p>
+    </div>
+    <div class="info-group">
+      <h3>Contact</h3>
+      <p>📞 +94 70 3848480<br>
+         ✉️ <a href="mailto:info@cinemax.lk">info@cinemax.lk</a></p>
+    </div>
+    <div class="info-group">
+      <h3>Location</h3>
+      <p>123 Main Street,<br>Colombo 07, Sri Lanka</p>
+    </div>
+  </section>
 
+  <footer>
+    <p>&copy; 2025 CinemaX. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
+
+
 
 
 

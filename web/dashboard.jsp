@@ -215,26 +215,7 @@
   <p>&copy; 2025 CinemaX. All rights reserved.</p>
 </footer>
 
-<!-- Added About Us, Contact & Location Section -->
-<section style="padding: 20px; background-color: #f4f4f4; margin-top: 30px;">
-  <h2>About Us</h2>
-  <p>
-    CinemaX is a modern and dynamic platform designed for movie lovers. We offer the latest movie schedules,
-    online ticket booking, and detailed movie information. Our goal is to provide a seamless and enjoyable
-    movie booking experience. Whether you're a casual viewer or a film enthusiast, CinemaX brings the cinema
-    to your fingertips.
-  </p>
 
-  <h3>Contact Us</h3>
-  <p>Phone: +94 70 3848480<br>
-     Email: info@cinemax.lk</p>
-
-  <h3>Location</h3>
-  <p>No. 123, Main Street, Colombo 07, Sri Lanka</p>
-</section>
-
-</body>
-</html>
 
 </body>
 </html>

@@ -1,10 +1,5 @@
-<%-- 
-    Document   : dashboard
-    Created on : Apr 26, 2025, 9:10:03 AM
-    Author     : Randun Gayantha
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,66 +133,25 @@
     .movie-info button:hover {
       background-color: #e84321;
     }
-
-    .about-contact {
-      display: flex;
-      justify-content: space-between;
-      background-color: #1a1a1a;
-      color: #ccc;
-      padding: 1.5rem 2rem;
-      font-size: 0.9rem;
-      border-top: 1px solid #333;
-      flex-wrap: wrap;
-    }
-
-    .about-contact .info-group {
-      flex: 1 1 30%;
-      margin: 0.5rem 1rem;
-    }
-
-    .about-contact h3 {
-      color: #ff4b2b;
-      margin-bottom: 0.5rem;
-      font-size: 1rem;
-    }
-
-    .about-contact p {
-      margin: 0;
-      line-height: 1.4;
-    }
-
-    .about-contact a {
-      color: #ff4b2b;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
+    
     footer {
-      background-color: #1a1a1a;
-      color: #aaa;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.85rem;
-      border-top: 1px solid #333;
-    }
+  background-color: #1a1a1a;
+  color: #aaa;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #333;
+}
+
 
     @media (max-width: 600px) {
       nav ul {
         flex-direction: column;
         gap: 1rem;
       }
-
       .movie img {
         height: 280px;
-      }
-
-      .about-contact {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .about-contact .info-group {
-        margin: 1rem 0;
       }
     }
   </style>
@@ -218,7 +172,7 @@
   </header>
 
   <section class="now-showing">
-    <h2>🎞️ Now Showing</h2>
+    <h2>🎞 Now Showing</h2>
     <div class="movies">
       <div class="movie">
         <img src="https://cdn.marvel.com/content/1x/avengersendgame_lob_crd_05.jpg" alt="Avengers">
@@ -228,7 +182,7 @@
         </div>
       </div>
       <div class="movie">
-        <img src="https://m.media-amazon.com/images/I/81fk-N7tvbL._AC_UF894,1000_QL80_.jpg" alt="John Wick 4">
+        <img src="https://m.media-amazon.com/images/I/81fk-N7tvbL.AC_UF894,1000_QL80.jpg" alt="John Wick 4">
         <div class="movie-info">
           <h3>John Wick 4</h3>
           <button onclick="window.location.href='customerLogin.jsp'">Book Now</button>
@@ -250,32 +204,45 @@
       </div>
     </div>
   </section>
-
-  <!-- Compact About/Contact Section -->
-  <section class="about-contact">
-    <div class="info-group">
-      <h3>About</h3>
-      <p>CinemaX offers fast and secure movie ticket bookings for all the latest blockbusters. Enjoy a seamless movie-going experience.</p>
-    </div>
-    <div class="info-group">
-      <h3>Contact</h3>
-      <p>📞 +94 70 3848480<br>
-         ✉️ <a href="mailto:info@cinemax.lk">info@cinemax.lk</a></p>
-    </div>
-    <div class="info-group">
-      <h3>Location</h3>
-      <p>123 Main Street,<br>Colombo 07, Sri Lanka</p>
+    
+    <section class="now-showing">
+    <h2>🎞Upcoming</h2>
+    <div class="movies">
+      <div class="movie">
+        <img src="https://m.media-amazon.com/images/M/MV5BOGRlN2ViNTUtMjFlZS00ZWZiLWEwN2EtY2U1YjAzNDI5ZjI2XkEyXkFqcGc@.V1.jpg" alt="Avengers">
+        <div class="movie-info">
+          <h3>Walampoori</h3>
+          
+        </div>
+      </div>
+      <div class="movie">
+        <img src="https://auslankatickets.com/wp-content/uploads/2025/01/PHOTO-2025-01-10-01-34-27-1.jpg" alt="John Wick 4">
+        <div class="movie-info">
+          <h3>Rani</h3>
+          
+        </div>
+      </div>
+      <div class="movie">
+        <img src="https://cdn.kinocheck.com/i/w=1200/myjb3xzzow.jpg" alt="Ballerina">
+        <div class="movie-info">
+          <h3>Ballerina</h3>
+          
+        </div>
+      </div>
+      <div class="movie">
+        <img src="https://m.media-amazon.com/images/M/MV5BZGQ5NGEyYTItMjNiMi00Y2EwLTkzOWItMjc5YjJiMjMyNTI0XkEyXkFqcGc@.V1.jpg" alt="Spider-Man">
+        <div class="movie-info">
+          <h3>Mission: Impossible - The Final Reckoning</h3>
+          
+        </div>
+      </div>
     </div>
   </section>
+ 
+<footer>
+  <p>&copy; 2025 CinemaX. All rights reserved.</p>
+</footer>
 
-  <footer>
-    <p>&copy; 2025 CinemaX. All rights reserved.</p>
-  </footer>
 
 </body>
 </html>
-
-
-
-
-

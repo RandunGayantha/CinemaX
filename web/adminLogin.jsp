@@ -1,77 +1,321 @@
-<%-- 
-    Document   : login
-    Created on : Apr 26, 2025, 9:09:25 AM
-    Author     : oshan
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Admin Login - Cinema Booking</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Admin Login - CinemaX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
+        :root {
+            --primary: #ff3e00;
+            --primary-dark: #e63900;
+            --secondary: #00a8ff;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #f5f5f5;
+            --gray: #2a2a2a;
+            --light-gray: #444;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #141e30, #243b55);
-            color: #fff;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: rgba(18, 18, 18, 0.95);
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-
-        h2 {
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px #000;
-        }
-
-        form {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 30px 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-        }
-
-        input[type="text"],
-        input[type="password"] {
+            padding: 1.2rem 5%;
+            position: fixed;
             width: 100%;
-            padding: 10px;
-            margin: 10px 0 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        input[type="submit"] {
-            background-color: #e50914;
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), #ff6b00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav .logo i {
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        nav ul li a i {
+            font-size: 0.9rem;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        /* Login Container */
+        .login-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .login-card {
+            background: var(--gray);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .login-card h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--light);
+            position: relative;
+        }
+
+        .login-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .input-group {
+            position: relative;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.5rem;
+            background: var(--dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 62, 0, 0.2);
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(50%);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-login {
+            padding: 0.8rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 8px;
             color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1em;
-            font-weight: bold;
-            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1rem;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            transition: all 0.3s;
+            margin-top: 1rem;
         }
 
-        input[type="submit"]:hover {
-            background-color: #b00610;
-            transform: scale(1.05);
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 62, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            color: var(--light);
+            padding: 2rem 5%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), #ff6b00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .login-card {
+                padding: 2rem;
+            }
+            
+            nav ul {
+                gap: 1.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .login-card {
+                padding: 1.5rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <h2>Admin Login</h2>
-    <form action="AdminLoginServlet" method="post"> 
-        Username: <input type="text" name="username"/><br/> 
-        Password: <input type="password" name="password"/><br/> 
-        <input type="submit" value="Login"/> 
-    </form> 
+    <nav>
+        <div class="logo">
+            <i class="fas fa-film"></i> CinemaX
+        </div>
+        <ul>
+            <li><a href="dashboard.jsp"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="customerLogin.jsp"><i class="fas fa-user"></i> Customer Login</a></li>
+        </ul>
+    </nav>
+
+    <div class="login-container">
+        <div class="login-card">
+            <h2>Admin Login</h2>
+            <form class="login-form" action="AdminLoginServlet" method="post">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" name="username" placeholder="Enter admin username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="btn-login">Sign In <i class="fas fa-arrow-right"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div>
+                <div class="footer-logo">
+                    <i class="fas fa-film"></i> CinemaX
+                </div>
+                <p>Premium movie experience with state-of-the-art theaters and unmatched service.</p>
+            </div>
+            <div>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Colombo 07, Sri Lanka</p>
+                <p><i class="fas fa-phone-alt"></i> +94 70 3848480</p>
+                <p><i class="fas fa-envelope"></i> admin@cinemax.lk</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 CinemaX. All Rights Reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
-

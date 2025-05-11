@@ -315,7 +315,7 @@
         <ul>
             <li><a href="admin.jsp"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
             <li><a href="manageFilms.jsp"><i class="fas fa-list"></i> Manage Films</a></li>
-            <li><a href="logout.jsp"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            <li><a href="AdminLogoutServlet"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </nav>
 

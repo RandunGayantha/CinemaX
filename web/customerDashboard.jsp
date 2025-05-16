@@ -24,7 +24,11 @@
     } else {response.sendRedirect("customerLogin.jsp");
     }
 %>
-<p><a href="Booking.jsp">Seat Booking</a></p>
+<p><a href="Booking.jsp">Seat Booking</a></p></br>
+<a href="ViewMyDetails.jsp">My Details</a></br>
+<a href="ViewCustomerBookingsServlet">My Bookings</a></br>
+<a href="ViewCustomerPaymentsServlet">My Payments</a></br>
+<a href="ViewFilmDetailsServlet">Films Details</a></br></br>
         <a href="CustomerLogoutServlet">Logout</a>
     </body>
 </html>

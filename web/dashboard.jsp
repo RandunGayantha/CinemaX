@@ -276,6 +276,31 @@
       margin-bottom: 1.2rem;
     }
 
+    .movie-prices {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .movie-price {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .price-premium {
+      color: gold;
+    }
+
+    .price-standard {
+      color: var(--light);
+    }
+
+    .price-accessible {
+      color: var(--secondary);
+    }
+
     .movie-info .btn-book {
       width: 100%;
       padding: 0.7rem;
@@ -605,6 +630,11 @@
       .movie-poster {
         height: 320px;
       }
+      
+      .movie-prices {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
     }
   </style>
 </head>
@@ -648,6 +678,11 @@
               <span>Action</span>
               <span>3h 1m</span>
             </div>
+            <div class="movie-prices">
+              <span class="movie-price price-premium">Premium: Rs.1500</span>
+              <span class="movie-price price-standard">Standard: Rs.2500</span>
+              <span class="movie-price price-accessible">Accessible: Rs.2000</span>
+            </div>
             <button class="btn-book" onclick="window.location.href='customerLogin.jsp'">
               <i class="fas fa-ticket-alt"></i> Book Tickets
             </button>
@@ -665,6 +700,11 @@
             <div class="movie-meta">
               <span>Action</span>
               <span>2h 49m</span>
+            </div>
+            <div class="movie-prices">
+              <span class="movie-price price-premium">Premium: Rs.1500</span>
+              <span class="movie-price price-standard">Standard: Rs.2500</span>
+              <span class="movie-price price-accessible">Accessible: Rs.2000</span>
             </div>
             <button class="btn-book" onclick="window.location.href='customerLogin.jsp'">
               <i class="fas fa-ticket-alt"></i> Book Tickets
@@ -684,6 +724,11 @@
               <span>Biography</span>
               <span>3h</span>
             </div>
+            <div class="movie-prices">
+              <span class="movie-price price-premium">Premium: Rs.1500</span>
+              <span class="movie-price price-standard">Standard: Rs.2500</span>
+              <span class="movie-price price-accessible">Accessible: Rs.2000</span>
+            </div>
             <button class="btn-book" onclick="window.location.href='customerLogin.jsp'">
               <i class="fas fa-ticket-alt"></i> Book Tickets
             </button>
@@ -701,6 +746,11 @@
             <div class="movie-meta">
               <span>Action</span>
               <span>2h 28m</span>
+            </div>
+            <div class="movie-prices">
+              <span class="movie-price price-premium">Premium: Rs.1500</span>
+              <span class="movie-price price-standard">Standard: Rs.2500</span>
+              <span class="movie-price price-accessible">Accessible: Rs.2000</span>
             </div>
             <button class="btn-book" onclick="window.location.href='customerLogin.jsp'">
               <i class="fas fa-ticket-alt"></i> Book Tickets
@@ -726,6 +776,11 @@
               <span>Drama</span>
               <span>2025</span>
             </div>
+            <div class="movie-prices">
+              <span class="movie-price price-premium">Premium: Rs.1500</span>
+              <span class="movie-price price-standard">Standard: Rs.2500</span>
+              <span class="movie-price price-accessible">Accessible: Rs.2000</span>
+            </div>
             <button class="btn-book" disabled>
               <i class="far fa-bell"></i> Notify Me
             </button>
@@ -741,6 +796,11 @@
             <div class="movie-meta">
               <span>Drama</span>
               <span>2025</span>
+            </div>
+            <div class="movie-prices">
+              <span class="movie-price price-premium">Premium: Rs.1500</span>
+              <span class="movie-price price-standard">Standard: Rs.2500</span>
+              <span class="movie-price price-accessible">Accessible: Rs.2000</span>
             </div>
             <button class="btn-book" disabled>
               <i class="far fa-bell"></i> Notify Me
@@ -758,6 +818,11 @@
               <span>Action</span>
               <span>2025</span>
             </div>
+            <div class="movie-prices">
+              <span class="movie-price price-premium">Premium: Rs.1500</span>
+              <span class="movie-price price-standard">Standard: Rs.2500</span>
+              <span class="movie-price price-accessible">Accessible: Rs.2000</span>
+            </div>
             <button class="btn-book" disabled>
               <i class="far fa-bell"></i> Notify Me
             </button>
@@ -773,6 +838,11 @@
             <div class="movie-meta">
               <span>Action</span>
               <span>2025</span>
+            </div>
+            <div class="movie-prices">
+              <span class="movie-price price-premium">Premium: Rs.1500</span>
+              <span class="movie-price price-standard">Standard: Rs.2500</span>
+              <span class="movie-price price-accessible">Accessible: Rs.2000</span>
             </div>
             <button class="btn-book" disabled>
               <i class="far fa-bell"></i> Notify Me

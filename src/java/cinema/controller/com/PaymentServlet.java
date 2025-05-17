@@ -4,8 +4,8 @@
  */
 package cinema.controller.com;
 
-import cinema.dao.com.PaymentsDAO;
-import cinema.model.com.Payments;
+import cinema.dao.com.PaymentDAO;
+import cinema.model.com.Payment;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -21,34 +21,48 @@ public class PaymentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
+HttpSession session = request.getSession(false);
+        if (session == null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
 
-        String cardName = request.getParameter("cardName");
-        String film = request.getParameter("film");
-        String time = request.getParameter("time");
-        String seats = request.getParameter("seats");
-        double amount = Double.parseDouble(request.getParameter("amount"));
+        String film = (String) session.getAttribute("film");
+        String time = (String) session.getAttribute("time");
+        String seats = (String) session.getAttribute("seats");
+        Integer amount = (Integer) session.getAttribute("amount");
+        Integer customerId = 1; // Replace with real session-based ID if available
 
-        Payments payment = new Payments();
-        payment.setCustomerId(1); // or get from session
-        payment.setCardName(cardName);
+        if (film == null || time == null || seats == null || amount == null) {
+            response.getWriter().println("Missing payment details.");
+            return;
+        }
+
+        // Create payment object
+        Payment payment = new Payment();
+        payment.setCustomerId(customerId);
         payment.setFilmName(film);
         payment.setShowTime(time);
         payment.setSeats(seats);
         payment.setAmount(amount);
+        payment.setStatus("Paid");
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinematicketsbookingsystem", "root", "1111")) {
+        try (Connection conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/cinematicketsbookingsystem", "root", "1111")) {
+
             Class.forName("com.mysql.cj.jdbc.Driver");
-            PaymentsDAO dao = new PaymentsDAO(conn);
-            dao.insertPayment(payment);
+            PaymentDAO paymentDAO = new PaymentDAO(conn);
+            paymentDAO.insertPayment(payment);
 
-            // Forward to success page with data
-            request.setAttribute("cardName", cardName);
-            request.setAttribute("film", film);
-            request.setAttribute("time", time);
-            request.setAttribute("seats", seats);
-            request.setAttribute("amount", amount);
+            // Clear session attributes
+            session.removeAttribute("film");
+            session.removeAttribute("time");
+            session.removeAttribute("seats");
+            session.removeAttribute("amount");
 
-            request.getRequestDispatcher("paymentSuccess.jsp").forward(request, response);
+            // Redirect to confirmation page
+            response.sendRedirect("paymentSuccess.jsp");
+
         } catch (Exception e) {
             throw new ServletException("Payment failed", e);
         }

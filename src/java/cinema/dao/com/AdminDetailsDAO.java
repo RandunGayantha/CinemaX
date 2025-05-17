@@ -16,10 +16,12 @@ public class AdminDetailsDAO {
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Map<String, String> row = new HashMap<>();
+                row.put("id", rs.getString("id"));
                 row.put("fullname", rs.getString("fullname"));
                 row.put("nic", rs.getString("nic"));
                 row.put("email", rs.getString("email"));
                 row.put("phone", rs.getString("phone"));
+                row.put("password", rs.getString("password"));
                 list.add(row);
             }
         } catch (Exception e) {

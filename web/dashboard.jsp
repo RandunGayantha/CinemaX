@@ -636,6 +636,34 @@
         gap: 0.5rem;
       }
     }
+    
+    .movie-meta {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.showtime {
+  color: var(--primary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.showtime i {
+  font-size: 0.8rem;
+}
+
+@media (max-width: 400px) {
+  .movie-meta {
+    flex-direction: column;
+  }
+}
   </style>
 </head>
 <body>
@@ -661,7 +689,9 @@
     </button>
   </section>
 
-  <section class="now-showing" id="now-showing">
+ 
+
+<section class="now-showing" id="now-showing">
     <div class="movies-container">
       <h2 class="section-title">Now Showing</h2>
       <div class="movies">
@@ -677,6 +707,7 @@
             <div class="movie-meta">
               <span>Action</span>
               <span>3h 1m</span>
+              <span class="showtime"><i class="far fa-clock"></i> 10:00 AM</span>
             </div>
             <div class="movie-prices">
               <span class="movie-price price-premium">Premium: Rs.1500</span>
@@ -700,6 +731,7 @@
             <div class="movie-meta">
               <span>Action</span>
               <span>2h 49m</span>
+              <span class="showtime"><i class="far fa-clock"></i> 1:00 PM</span>
             </div>
             <div class="movie-prices">
               <span class="movie-price price-premium">Premium: Rs.1500</span>
@@ -723,6 +755,7 @@
             <div class="movie-meta">
               <span>Biography</span>
               <span>3h</span>
+              <span class="showtime"><i class="far fa-clock"></i> 10:00 PM</span>
             </div>
             <div class="movie-prices">
               <span class="movie-price price-premium">Premium: Rs.1500</span>
@@ -746,6 +779,7 @@
             <div class="movie-meta">
               <span>Action</span>
               <span>2h 28m</span>
+              <span class="showtime"><i class="far fa-clock"></i> 7:00 PM</span>
             </div>
             <div class="movie-prices">
               <span class="movie-price price-premium">Premium: Rs.1500</span>
@@ -760,6 +794,8 @@
       </div>
     </div>
   </section>
+
+
     
   <section class="upcoming" id="upcoming">
     <div class="movies-container">
